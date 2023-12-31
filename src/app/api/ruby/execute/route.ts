@@ -6,9 +6,7 @@ import { RbError } from "@ruby/wasm-wasi";
 export const POST = async (request: NextRequest) => {
   const body = await request.json();
 
-  const binary = await fs.readFile(
-    process.cwd() + "/node_modules/@ruby/3.3-wasm-wasi/dist/ruby.wasm"
-  );
+  const binary = await fs.readFile(process.cwd() + "/src/app/wasm/ruby.wasm");
   const modules = await WebAssembly.compile(binary);
   const { vm } = await DefaultRubyVM(modules);
 
