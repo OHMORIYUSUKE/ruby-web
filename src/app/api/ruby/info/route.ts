@@ -4,7 +4,9 @@ import { DefaultRubyVM } from "@ruby/wasm-wasi/dist/node";
 import { RbError } from "@ruby/wasm-wasi";
 
 export const GET = async () => {
-  const binary = await fs.readFile(process.cwd() + "/public/ruby.wasm");
+  const binary = await fs.readFile(
+    process.cwd() + "/node_modules/@ruby/3.3-wasm-wasi/dist/ruby.wasm"
+  );
   const modules = await WebAssembly.compile(binary);
   const { vm } = await DefaultRubyVM(modules);
   vm.eval(`
