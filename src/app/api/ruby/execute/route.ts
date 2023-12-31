@@ -37,12 +37,9 @@ export const POST = async (request: NextRequest) => {
 
     console.log("Ruby VM Result:", output);
 
-    return NextResponse.json({ message: output }, { status: 200 });
+    return NextResponse.json(output, { status: 200 });
   } catch (e) {
     console.log("Ruby VM Result:", (e as RbError).toString());
-    return NextResponse.json(
-      { message: (e as RbError).toString() },
-      { status: 500 }
-    );
+    return NextResponse.json((e as RbError).toString(), { status: 500 });
   }
 };
